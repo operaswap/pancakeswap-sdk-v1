@@ -12,7 +12,6 @@ import {
   MINIMUM_LIQUIDITY,
   ZERO,
   ONE,
-  FIVE,
   _998,
   _1000,
   ChainId
@@ -209,7 +208,7 @@ export class Pair {
         const rootKLast = sqrt(kLastParsed)
         if (JSBI.greaterThan(rootK, rootKLast)) {
           const numerator = JSBI.multiply(totalSupply.raw, JSBI.subtract(rootK, rootKLast))
-          const denominator = JSBI.add(JSBI.multiply(rootK, FIVE), rootKLast)
+          const denominator = JSBI.add(JSBI.multiply(rootK, ZERO), rootKLast)
           const feeLiquidity = JSBI.divide(numerator, denominator)
           totalSupplyAdjusted = totalSupply.add(new TokenAmount(this.liquidityToken, feeLiquidity))
         } else {
